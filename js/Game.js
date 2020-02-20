@@ -15,7 +15,7 @@ class Game {
 
     createPhrases() {
             const phrases = [new Phrase('They are here'),
-                new Phrase('They call it a Royale with cheese'),
+                new Phrase('My precious'),
                 new Phrase('Wax on wax off'),
                 new Phrase('Hakuna Matata'),
                 new Phrase('You talking to me')
@@ -69,9 +69,11 @@ class Game {
     /**
      * Displays game over message
      * @param {boolean} gameWon - Whether or not the user won the game
+     * Also handles aesthetic of "win" or "lose" pages.
      */
     gameOver(gameWon) {
         const divOverlay = document.querySelector('#overlay');
+        const titleDiv = document.querySelector('#overlay div');
         const h1 = document.querySelector('#game-over-message');
         const button = document.querySelector('#btn__reset');
         divOverlay.style.display = '';
@@ -79,10 +81,18 @@ class Game {
             h1.textContent = 'Congratulations! You won!';
             divOverlay.className = 'win';
             button.textContent = 'Play again!';
+            button.className = '';
+            titleDiv.className = '';
+
         } else {
             h1.textContent = 'Sorry! You ran out of lives.';
             divOverlay.className = 'lose';
             button.textContent = 'Try again!';
+            button.className = '';
+            titleDiv.className = '';
+
+
+
         }
         this.resetGame();
         return gameWon;
@@ -106,6 +116,7 @@ class Game {
                 button.className = 'wrong';
                 this.removeLife(true);
             }
+
         }
         /**
          * Resets the phrase and the keyboard.
