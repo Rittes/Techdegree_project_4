@@ -6,6 +6,7 @@
 /**
  * Adds moving effects to the title page, before game starts
  */
+const divOverlay = document.querySelector('#overlay');
 const titleDiv = document.querySelector('#overlay div');
 titleDiv.className = 'moveRight';
 
@@ -30,5 +31,7 @@ keyboard.forEach(key => {
 });
 
 document.addEventListener("keyup", function(e) {
-    game.keyup(e);
+    if (divOverlay.style.display === 'none') {
+        game.keyup(e);
+    }
 });
