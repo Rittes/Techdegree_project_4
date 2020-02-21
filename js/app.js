@@ -6,19 +6,19 @@
 /**
  * Adds moving effects to the title page, before game starts
  */
+
+const btnReset = document.querySelector('#btn__reset');
 const divOverlay = document.querySelector('#overlay');
 const titleDiv = document.querySelector('#overlay div');
 titleDiv.className = 'moveRight';
 
 /** Starts new game */
+
 const game = new Game();
 
-const btnReset = document.querySelector('#btn__reset');
 btnReset.addEventListener('click', function() {
-
     game.startGame();
 });
-
 
 /** Click  and keyboard listeners for onscreen keyboard*/
 

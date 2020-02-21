@@ -4,32 +4,35 @@
 
 class Game {
     constructor() {
-            this.missed = 0;
-            this.phrases = this.createPhrases();
-            this.activePhrase = null;
-        }
-        /**
-         * Creates phrases for use in game
-         * @return {array} An array of phrases that could be used in the game
-         */
+        this.missed = 0;
+        this.phrases = this.createPhrases();
+        this.activePhrase = null;
+    }
+
+    /**
+     * Creates phrases for use in game
+     * @return {array} An array of phrases that could be used in the game
+     */
 
     createPhrases() {
-            const phrases = [new Phrase('They are here'),
-                new Phrase('My precious'),
-                new Phrase('Wax on wax off'),
-                new Phrase('Hakuna Matata'),
-                new Phrase('You talking to me')
-            ];
-            return phrases;
-        }
-        /**
-         * * Selects random phrase from phrases property 
-         * @return {Object} Phrase object chosen to be used 
-         */
+        const phrases = [new Phrase('They are here'),
+            new Phrase('My precious'),
+            new Phrase('Wax on wax off'),
+            new Phrase('Hakuna Matata'),
+            new Phrase('You talking to me')
+        ];
+        return phrases;
+    }
+
+    /**
+     * * Selects random phrase from phrases property 
+     * @return {Object} Phrase object chosen to be used 
+     */
 
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     };
+
     /**
      * Begins game by selecting a random phrase and displaying it to user
      */
@@ -84,19 +87,15 @@ class Game {
             button.textContent = 'Play again!';
             button.className = '';
             titleDiv.className = '';
-
         } else {
             h1.textContent = 'Sorry! You ran out of lives.';
             divOverlay.className = 'lose';
             button.textContent = 'Try again!';
             button.className = '';
             titleDiv.className = '';
-
-
         }
         this.resetGame();
         return gameWon;
-
     };
 
     /**
@@ -116,12 +115,12 @@ class Game {
                 button.className = 'wrong';
                 this.removeLife(true);
             }
-
         }
         /**
          * Resets the phrase and the keyboard.
          * Resets player's lives.
          */
+
     resetGame() {
         this.missed = 0;
         const phraseList = document.querySelector('#phrase ul');
@@ -137,7 +136,6 @@ class Game {
             key.classList.add('key');
             key.disabled = false;
         });
-
     }
 
     keyup(event) {
@@ -147,6 +145,5 @@ class Game {
                 this.handleInteraction(key);
             }
         });
-
     }
 }
