@@ -39,6 +39,7 @@ class Game {
         const randomPhrase = this.getRandomPhrase();
         randomPhrase.addPhraseToDisplay();
         this.activePhrase = randomPhrase;
+
     }
 
     /**
@@ -92,7 +93,6 @@ class Game {
             titleDiv.className = '';
 
 
-
         }
         this.resetGame();
         return gameWon;
@@ -134,9 +134,19 @@ class Game {
         keyboard.forEach(key => {
             key.classList.remove('wrong');
             key.classList.remove('chosen');
+            key.classList.add('key');
             key.disabled = false;
         });
 
     }
 
+    keyup(event) {
+        const keys = document.querySelectorAll('#qwerty .key');
+        keys.forEach(key => {
+            if (event.key === key.innerText) {
+                this.handleInteraction(key);
+            }
+        });
+
+    }
 }
